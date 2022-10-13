@@ -2,7 +2,7 @@
 
 namespace DataStructures;
 
-use DataStructures\Node;
+use OutOfBoundsException;
 
 /**
  * LinkedList
@@ -108,7 +108,7 @@ class LinkedList
     /**
      * remove the last node from the list
      */
-    public function removeLast(): void
+    public function deleteLast(): void
     {
         $current = $this->head;
         $previous = null;
