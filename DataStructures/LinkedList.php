@@ -87,7 +87,7 @@ class LinkedList
      * @param $data
      * @return void
      */
-    public function remove($data): void
+    public function delete($data): void
     {
         $current = $this->head;
         $previous = null;
@@ -106,13 +106,36 @@ class LinkedList
     }
 
     /**
+     * remove the last node from the list
+     */
+    public function removeLast(): void
+    {
+        $current = $this->head;
+        $previous = null;
+        while ($current->next != null) {
+            $previous = $current;
+            $current = $current->next;
+        }
+        $previous->next = null;
+    }
+    /**
+     * Remove the first node from the list
+     *
+     * @return void
+     */
+    public function deleteFirst(): void
+    {
+        $this->head = $this->head->next;
+    }
+
+    /**
      * Remove a node at a given position
      *
      * @param $position
      * @return void
      * @throws OutOfBoundsException
      */
-    public function removeAt($position): void
+    public function deleteAt($position): void
     {
         if ($position > $this->length() - 1 || $position < 0) {
             throw new OutOfBoundsException("$position is out of bounds");
@@ -201,5 +224,15 @@ class LinkedList
             $current = $current->next;
         }
         return $array;
+    }
+
+    /**
+     * Clears all nodes from the list
+     *
+     * @return void
+     */
+    public function clear(): void
+    {
+        $this->head = null;
     }
 }

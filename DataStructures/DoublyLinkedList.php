@@ -90,7 +90,7 @@ class DoublyLinkedList
      * @param $data
      * @return void
      */
-    public function remove($data): void
+    public function delete($data): void
     {
         $current = $this->head;
         $previous = null;
@@ -111,6 +111,32 @@ class DoublyLinkedList
     }
 
     /**
+     * removes the last node from the list
+     *
+     * @return void
+     */
+    public function deleteLast(): void
+    {
+        $current = $this->head;
+        $previous = null;
+        while ($current->next != null) {
+            $previous = $current;
+            $current = $current->next;
+        }
+        $previous->next = null;
+    }
+
+    /**
+     * removes the first node of the list
+     * @return void
+     */
+    public function deleteFirst(): void
+    {
+        $this->head = $this->head->next;
+        $this->head->prev = null;
+    }
+
+    /**
      * removes the node at a specific position in the linked list
      * throws an OutOfBoundsException if the position is out of bounds
      *
@@ -118,7 +144,7 @@ class DoublyLinkedList
      * @return void
      * @throws OutOfBoundsException
      */
-    public function removeAt($position): void
+    public function deleteAt($position): void
     {
         if ($position > ($this->length() - 1) || $position < 0) {
             throw new OutOfBoundsException("$position is out of bounds");
@@ -210,6 +236,16 @@ class DoublyLinkedList
             $current = $current->next;
         }
         return $array;
+    }
+
+    /**
+     * unlinks all nodes in the list
+     *
+     * @return void
+     */
+    public function clear(): void
+    {
+        $this->head = null;
     }
 
 }
