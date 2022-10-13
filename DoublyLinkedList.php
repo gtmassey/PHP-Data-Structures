@@ -6,7 +6,7 @@
 class DoublyLinkedList
 {
 
-    public $head;
+    public Node|null $head;
 
     /**
      * LinkedList default constructor
