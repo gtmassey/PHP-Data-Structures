@@ -1,9 +1,13 @@
 <?php
 
+namespace DataStructures;
+
+use DataStructures\Node;
+
 /**
- * DoublyLinkedList
+ * LinkedList
  */
-class DoublyLinkedList
+class LinkedList
 {
 
     public Node|null $head;
@@ -17,10 +21,9 @@ class DoublyLinkedList
     }
 
     /**
-     * add a new node to the doubly linked list
+     * Add a new node with $data to the end of the list
      *
      * @param $data
-     * @return void
      */
     public function add($data): void
     {
@@ -33,12 +36,11 @@ class DoublyLinkedList
                 $current = $current->next;
             }
             $current->next = $node;
-            $node->prev = $current;
         }
     }
 
     /**
-     * add a new node at a specific position
+     * Add a new node with $data at a specific position
      *
      * @param $position
      * @param $data
@@ -61,13 +63,11 @@ class DoublyLinkedList
             }
             $node->next = $current;
             $previous->next = $node;
-            $node->prev = $previous;
-            $current->prev = $node;
         }
     }
 
     /**
-     * Adds a new node to the beginning of the list
+     * Add a node with $data at the beginning of the list
      *
      * @param $data
      * @return void
@@ -77,13 +77,12 @@ class DoublyLinkedList
         $node = new Node($data);
         if ($this->head != null) {
             $node->next = $this->head;
-            $this->head->prev = $node;
         }
         $this->head = $node;
     }
 
     /**
-     * Removes any node(s) with the given data from the list
+     * Remove the last node from the list
      *
      * @param $data
      * @return void
@@ -96,10 +95,8 @@ class DoublyLinkedList
             if ($current->data == $data) {
                 if ($previous == null) {
                     $this->head = $current->next;
-                    $this->head->prev = null;
                 } else {
                     $previous->next = $current->next;
-                    $current->next->prev = $previous;
                 }
                 return;
             }
@@ -109,8 +106,7 @@ class DoublyLinkedList
     }
 
     /**
-     * removes the node at a specific position in the linked list
-     * throws an OutOfBoundsException if the position is out of bounds
+     * Remove a node at a given position
      *
      * @param $position
      * @return void
@@ -118,7 +114,7 @@ class DoublyLinkedList
      */
     public function removeAt($position): void
     {
-        if ($position > ($this->length() - 1) || $position < 0) {
+        if ($position > $this->length() - 1 || $position < 0) {
             throw new OutOfBoundsException("$position is out of bounds");
         } else {
             $current = $this->head;
@@ -128,11 +124,10 @@ class DoublyLinkedList
                 if ($i == $position) {
                     if ($previous == null) {
                         $this->head = $current->next;
-                        $this->head->prev = null;
                     } else {
                         $previous->next = $current->next;
-                        $current->next->prev = $previous;
                     }
+                    return;
                 }
                 $previous = $current;
                 $current = $current->next;
@@ -142,7 +137,7 @@ class DoublyLinkedList
     }
 
     /**
-     * returns the size of the linked list as an int
+     * returns the length of the list as an int
      *
      * @return int
      */
@@ -158,7 +153,7 @@ class DoublyLinkedList
     }
 
     /**
-     * returns the head node of the linked list
+     * Gets the head node of the list
      *
      * @return Node
      */
@@ -168,9 +163,7 @@ class DoublyLinkedList
     }
 
     /**
-     * returns the node at a specific position in the linked list
-     * returns null if the node is empty
-     * throws an OutOfBoundsException if the position is out of bounds
+     * returns the node at a given position
      *
      * @param $position
      * @return Node|null
@@ -178,7 +171,7 @@ class DoublyLinkedList
      */
     public function getAt($position): Node|null
     {
-        if ($position > ($this->length() - 1) || $position < 0) {
+        if ($position > $this->length() - 1 || $position < 0) {
             throw new OutOfBoundsException("$position is out of bounds");
         } else {
             $current = $this->head;
@@ -187,15 +180,15 @@ class DoublyLinkedList
                 if ($i == $position) {
                     return $current;
                 }
-                $i++;
                 $current = $current->next;
+                $i++;
             }
             return null;
         }
     }
 
     /**
-     * Converts the data in the linked list to an array
+     * returns the linked list as a standard array
      *
      * @return array
      */
@@ -209,5 +202,4 @@ class DoublyLinkedList
         }
         return $array;
     }
-
 }
