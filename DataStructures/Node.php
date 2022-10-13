@@ -4,9 +4,9 @@ namespace DataStructures;
 
 class Node
 {
-    public $data;
-    public $next;
-    public $prev;
+    public mixed $data;
+    public Node|null $next;
+    public Node|null $prev;
 
     public function __construct($data)
     {
