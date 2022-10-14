@@ -31,10 +31,6 @@ $singleList->deleteAt(1);
 //[1, 4, 5, 6]
 print_r($singleList->toArray());
 
-$singleList->clear();
-//[]
-print_r($singleList->toArray());
-
 $doubleList = new DataStructures\DoublyLinkedList();
 
 $doubleList->add('a');
@@ -80,3 +76,18 @@ var_dump($val->getNext()->getData());
 var_dump($val->isEnd());
 //false
 var_dump($val->isStart());
+
+
+print_r($singleList->reverse()->toArray());
+
+print_r($singleList->forEach(function ($data) {
+    return $data * 2;
+    })->toArray());
+
+print_r($singleList->sort(function ($a) {
+    return $a % 2;
+})->toArray());
+
+$singleList->clear();
+//[]
+print_r($singleList->toArray());

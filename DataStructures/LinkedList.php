@@ -118,6 +118,7 @@ class LinkedList
         }
         $previous->next = null;
     }
+
     /**
      * Remove the first node from the list
      *
@@ -235,4 +236,216 @@ class LinkedList
     {
         $this->head = null;
     }
+
+    /**
+     * Gets the max element from the linked list
+     * If there are multiple nodes with the same max value,
+     * the first node with the max value will be returned
+     *
+     * If the list is empty, null will be returned
+     *
+     * @return null|Node $max
+     */
+    public function max(): Node|null
+    {
+        if ($this->head == null) {
+            return null;
+        } else {
+            $current = $this->head;
+            $max = $current;
+            while ($current != null) {
+                if ($current->data > $max->data) {
+                    $max = $current;
+                }
+                $current = $current->next;
+            }
+            return $max;
+        }
+
+    }
+
+    /**
+     * gets the min node from the list
+     * if there are multiple nodes with the same min value,
+     * the first node with the min value will be returned
+     *
+     * if there are no nodes in the list, the function will return null
+     *
+     * @return null|Node $min
+     */
+    public function min(): Node|null
+    {
+        if ($this->head == null) {
+            return null;
+        } else {
+            $current = $this->head;
+            $min = $current;
+            while ($current != null) {
+                if ($current->data < $min->data) {
+                    $min = $current;
+                }
+                $current = $current->next;
+            }
+            return $min;
+        }
+    }
+
+    /**
+     * returns a new LinkedList with
+     * duplicate values removed
+     *
+     * @return LinkedList $deduped
+     */
+    public function dedupe(): LinkedList
+    {
+        $deduped = new LinkedList();
+        $current = $this->head;
+        while ($current != null) {
+            if (!$deduped->contains($current->data)) {
+                $deduped->add($current->data);
+            }
+            $current = $current->next;
+        }
+        return $deduped;
+    }
+
+    /**
+     * Returns a new LinkedList with only the unique values
+     * of the original LinkedList
+     *
+     * @return LinkedList
+     */
+    public function unique(): LinkedList
+    {
+        $unique = new LinkedList();
+        $current = $this->head;
+        $values = [];
+        while ($current != null) {
+            if (!in_array($current->data, $values)) {
+                $values[] = $current->data;
+                $unique->add($current->data);
+            }
+            $current = $current->next;
+        }
+        return $unique;
+    }
+
+    /**
+     * returns a new LinkedList that is the reverse of the $this LinkedList
+     *
+     * @return LinkedList
+     */
+    public function reverse(): LinkedList
+    {
+        $reversed = new LinkedList();
+        $current = $this->head;
+        while ($current != null) {
+            $reversed->addFirst($current->data);
+            $current = $current->next;
+        }
+        return $reversed;
+    }
+
+    /**
+     * Checks if the list contains a given value
+     *
+     * @param $data
+     * @return bool
+     */
+    public function contains($data): bool
+    {
+        $current = $this->head;
+        while ($current != null) {
+            if ($current->data == $data) {
+                return true;
+            }
+            $current = $current->next;
+        }
+        return false;
+    }
+
+    /**
+     * method that iterate through the list and runs
+     * the given callback function on each element
+     *
+     * Returns a new LinkedList with the results of the callback
+     *
+     * @param  callable  $callback
+     * @return LinkedList $this
+     */
+    public function forEach(callable $callback): LinkedList
+    {
+        $list = new LinkedList();
+        $current = $this->head;
+        while ($current != null) {
+            $list->add($callback($current->data));
+            $current = $current->next;
+        }
+        return $list;
+    }
+
+    /**
+     * Returns a new LinkedList with ascending sorted data
+     *
+     * @return LinkedList
+     */
+    public function sortAsc(): LinkedList
+    {
+        $sorted = new LinkedList();
+        $current = $this->head;
+        $values = [];
+        while ($current != null) {
+            $values[] = $current->data;
+            $current = $current->next;
+        }
+        sort($values);
+        foreach ($values as $value) {
+            $sorted->add($value);
+        }
+        return $sorted;
+    }
+
+    /**
+     * Returns a new LinkedList with descending sorted data
+     *
+     * @return LinkedList
+     */
+    public function sortDesc(): LinkedList
+    {
+        $sorted = new LinkedList();
+        $current = $this->head;
+        $values = [];
+        while ($current != null) {
+            $values[] = $current->data;
+            $current = $current->next;
+        }
+        rsort($values);
+        foreach ($values as $value) {
+            $sorted->add($value);
+        }
+        return $sorted;
+    }
+
+    /**
+     * returns a new LinkedList with sorting as defined by the callback function
+     *
+     * @param  callable  $callback
+     * @return LinkedList
+     */
+    public function sort(callable $callback): LinkedList
+    {
+        $sorted = new LinkedList();
+        $current = $this->head;
+        $values = [];
+        while ($current != null) {
+            $values[] = $current->data;
+            $current = $current->next;
+        }
+        usort($values, $callback);
+        foreach ($values as $value) {
+            $sorted->add($value);
+        }
+        return $sorted;
+    }
+
 }
