@@ -5,7 +5,38 @@ namespace DataStructures;
 use OutOfBoundsException;
 
 /**
- * LinkedList
+ * Doubly Linked List
+ *
+ * @author  Garrett Massey
+ * @license MIT
+ * @link https://github.com/gtmassey/PHP-Data-Structures
+ * @link http://www.garrettmassey.net/
+ * @version 1.0
+ *
+ * Available Methods:
+ *      add($data)              Adds a new node to the end of the list
+ *      addAt($position, $data) Add a new node at the specified position
+ *      addFirst($data)         Add a new node to the beginning of the list
+ *      delete($data)           Deletes all nodes with the specified data
+ *      deleteLast()            Delete the last node in the list
+ *      deleteFirst()           Delete the first node in the list
+ *      deleteAt($position)     Removes the node at the specified position
+ *      length()                Returns the length of the list (number of nodes)
+ *      get()                   Returns the head node of the list
+ *      getAt($position)        Gets the node at a given position
+ *      toArray()               Return an array of all nodes in the list
+ *      clear()                 Removes all nodes from the list
+ *      max()                   Returns the node with the max value
+ *      min()                   Returns the node with the min value
+ *      dedupe()                Returns a new LinkedList with no duplicate values
+ *      unique()                Returns a new LinkedList with only the unique values
+ *      reverse()               Returns a new list with the nodes in reverse order
+ *      contains($data)         Checks if the LinkedList contains the $data
+ *      forEach($callback)      Iterates over each node in the list with a callback
+ *      sortAsc()               Returns a new LinkedList sorted in ascending order
+ *      sortDesc()              Returns a new LinkedList sorted in descending order
+ *      sort($callback)         Returns a new LinkedList sorted using a callback
+ *
  */
 class LinkedList
 {

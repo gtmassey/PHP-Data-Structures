@@ -4,6 +4,11 @@ include('DataStructures/Node.php');
 include('DataStructures/LinkedList.php');
 include('DataStructures/DoublyLinkedList.php');
 
+$list = new DataStructures\LinkedList();
+
+var_dump(get_class_methods('DataStructures\LinkedList'));
+
+/**
 $singleList = new DataStructures\LinkedList();
 $singleList->add(1);
 $singleList->add(2);
@@ -90,4 +95,4 @@ print_r($singleList->sort(function ($a) {
 
 $singleList->clear();
 //[]
-print_r($singleList->toArray());
+print_r($singleList->toArray()); */

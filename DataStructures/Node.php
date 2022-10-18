@@ -8,6 +8,10 @@ class Node
     public Node|null $next;
     public Node|null $prev;
 
+    public Node|null $left;
+    public Node|null $right;
+    public Node|null $parent;
+
     public function __construct($data)
     {
         $this->data = $data;
@@ -23,6 +27,36 @@ class Node
     public function getData(): mixed
     {
         return $this->data;
+    }
+
+    /**
+     * returns the left child of the given node
+     *
+     * @return Node|null
+     */
+    public function getLeft(): Node|null
+    {
+        return $this->left;
+    }
+
+    /**
+     * returns the right child of the given node
+     *
+     * @return Node|null
+     */
+    public function getRight(): Node|null
+    {
+        return $this->right;
+    }
+
+    /**
+     * returns the parent of the given node
+     *
+     * @return Node|null
+     */
+    public function getParent(): Node|null
+    {
+        return $this->parent;
     }
 
     /**
