@@ -1,5 +1,50 @@
 <?php
 
+namespace DataStructures;
+
+require('vendor/autoload.php');
+
+//$queue = new Queue();
+//
+//$queue->enqueue("first");
+//$queue->enqueue("second");
+//$queue->enqueue("third");
+//
+//var_dump($queue->toString());
+//
+//$queue->dequeue();
+//
+//var_dump($queue->toString());
+//
+//$queue->enqueue("new data");
+//
+//var_dump($queue->toString());
+//
+//var_dump($queue->peek());
+//var_dump($queue->peekNext());
+
+//$stack = new Stack();
+//$stack->push(1);
+//$stack->push(2);
+//$stack->push(3);
+//var_dump($stack->toString());
+//$stack->pop();
+//var_dump($stack->toString());
+//$stack->push("new data");
+//var_dump($stack->toString());
+//var_dump($stack->peek());
+//var_dump($stack->peekNext());
+
+$deck = new Deque();
+$deck->addFirst("MiddleCard");
+$deck->addFirst("TopCard");
+$deck->addLast("BottomCard");
+var_dump($deck->toString());
+$deck->remove();
+$deck->removeFirst();
+var_dump($deck->toString());
+
+/*
 include('DataStructures/Node.php');
 include('DataStructures/LinkedList.php');
 include('DataStructures/DoublyLinkedList.php');
@@ -7,7 +52,7 @@ include('DataStructures/DoublyLinkedList.php');
 $list = new DataStructures\LinkedList();
 
 var_dump(get_class_methods('DataStructures\LinkedList'));
-
+*/
 /**
 $singleList = new DataStructures\LinkedList();
 $singleList->add(1);

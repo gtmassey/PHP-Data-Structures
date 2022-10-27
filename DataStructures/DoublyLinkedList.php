@@ -45,6 +45,7 @@ class DoublyLinkedList
 {
 
     public Node|null $head;
+    public Node|null $tail;
 
     /**
      * LinkedList default constructor
@@ -52,6 +53,7 @@ class DoublyLinkedList
     public function __construct()
     {
         $this->head = null;
+        $this->tail = null;
     }
 
     /**
@@ -160,6 +162,7 @@ class DoublyLinkedList
             $current = $current->next;
         }
         $previous->next = null;
+        $this->tail = $previous;
     }
 
     /**

@@ -1,0 +1,15 @@
+{
+    "name": "garrettmassey/php-data-structures",
+    "authors": [
+        {
+            "name": "gtmassey",
+            "email": "contact@garrettmassey.net"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "DataStructures\\": "DataStructures/"
+        }
+    }
+}
